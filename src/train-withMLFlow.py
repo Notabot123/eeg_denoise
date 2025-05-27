@@ -30,8 +30,8 @@ def train_model(train_loader, val_loader, args):
             model.train()
             train_loss = 0.0
             for noisy, clean in train_loader:
-                noisy = noisy.unsqueeze(-1).to(device)
-                clean = clean.unsqueeze(-1).to(device)
+                noisy = noisy.to(device)
+                clean = clean.to(device)
                 optimizer.zero_grad()
                 output = model(noisy)
                 loss = criterion(output, clean)
@@ -44,8 +44,8 @@ def train_model(train_loader, val_loader, args):
             val_loss = 0.0
             with torch.no_grad():
                 for noisy, clean in val_loader:
-                    noisy = noisy.unsqueeze(-1).to(device)
-                    clean = clean.unsqueeze(-1).to(device)
+                    noisy = noisy.to(device)
+                    clean = clean.to(device)
                     output = model(noisy)
                     loss = criterion(output, clean)
                     val_loss += loss.item()
