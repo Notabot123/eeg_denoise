@@ -5,7 +5,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 
-from model import EEGDenoisingLSTM
+from model import EEGDenoiseLSTM
 from dataset import EEGDataset  # From dataset.py
 
 import mlflow
@@ -14,7 +14,7 @@ import mlflow.pytorch
 def train_model(train_loader, val_loader, args):
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = EEGDenoisingLSTM().to(device)
+    model = EEGDenoiseLSTM().to(device)
     criterion = nn.MSELoss()
     optimizer = optim.Adam(model.parameters(), lr=0.001)
 

@@ -5,14 +5,14 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import DataLoader
 
-from model import EEGDenoisingLSTM
+from model import EEGDenoiseLSTM
 from dataset import EEGDataset  # From dataset.py
 
 def train_model(train_loader, val_loader, args):
 
     # Device setup
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = EEGDenoisingLSTM().to(device)
+    model = EEGDenoiseLSTM().to(device)
 
     # Optimizer and loss
     criterion = nn.MSELoss()

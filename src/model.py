@@ -1,3 +1,5 @@
+import torch.nn as nn
+
 class EEGDenoiseLSTM(nn.Module):
     def __init__(self, input_size=1, hidden_size=64, num_layers=1, dropout=0.3):
         super(EEGDenoiseLSTM, self).__init__()
